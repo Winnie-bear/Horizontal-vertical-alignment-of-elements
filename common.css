@@ -1,0 +1,25 @@
+/* 公共样式代码 */
+body{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parent{
+   width:30vw;
+   height: 30vh;
+   border:1px solid  palegreen; 
+}
+
+.child{
+   background-color: paleturquoise;
+}
+
+.child.size{
+   width: 10vw;
+   height: 10vh;
+}

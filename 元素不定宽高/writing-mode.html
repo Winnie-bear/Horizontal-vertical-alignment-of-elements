@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>writing-mode</title>
+  <link href="../common.css" rel="stylesheet" type="text/css" />
+  <style>
+    /* 前言：writing-mode可以把水平方向上的属性变为垂直方向上的属性 。在不设置text-align的情况下，
+    浏览器是默认居左的，但是其前提是，它的祖辈元素也没有设置text-align属性。如果祖辈设置了，
+    那么目标元素的text-align是继承它父元素的text-align属性的*/
+    /* 代码解析 wp-inner是用来使子元素水平居中的。其没有设置高度，则由子元素撑开 */
+    .parent{
+      text-align: center;
+      writing-mode: vertical-lr; /*垂直方向自左而右的书写方式*/
+    }
+    .wp-inner{
+      display: inline-block;
+      writing-mode: horizontal-tb; /*水平方向自上而下的书写方式 。此处用来将竖直方向的CSS属性转变到水平方向 */
+      width: 100%; /*不设置宽度100%,就会默认取子元素的宽度 */
+      /* background-color:aqua; */
+      font-size: 0; /* 消除幽灵空白节点的影响 */
+      text-align: center; /*写不写都可，不写会默认继承父元素的属性值 */
+    }
+    .child{
+      display: inline-block;
+      font-size: 16px; /* 消除父元素的影响 */
+    }
+  </style>
+</head>
+<body>
+    <div class="parent">
+      <div class="wp-inner">
+          <div class="child">winnie</div>
+      </div>
+    </div>
+</body>
+</html>

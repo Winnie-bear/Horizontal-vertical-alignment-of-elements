@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lineheight</title>
+  <link href="../common.css" rel="stylesheet" type="text/css" />
+  <style>
+    /* line-height设置为%或具体数字时，会根据当前字体的font-size计算出具体值,默认值是normal(1.2)。
+    当一行中仅有非替换元素，content-area=font-size,linebox的高=line-height。当子元素被定义为内联元素后，
+    其后面产生一个宽度为0的空格元素，它content-area由font-size决定，当自身没有定义，父元素定义后，则继承
+    父元素的font-size属性。若父元素没有定义，则采用默认值medium。*/
+    /* 代码解析： 父元素显性设置line-height,子元素设置vertical-align：middle，则可以近似垂直水平居中。
+    为什么是近似？因为「幽灵空白节点」高度行高撑开，其垂直中心是字符content area的中心。找到原因后，
+    只要使其content-area为0就行了，由于空白节点无法设置CSS属性，最好的办法就是修改其父元素上的CSS属性，将
+    父元素的font—size设为0即可*/
+    .parent{
+      text-align: center;
+      line-height: 30vh; /* 使行高和元素高度一致，子元素设置vertical-align后方可垂直居中 */
+      font-size: 0; /* 使空白节点的content-area为0 */
+    }
+    .child{
+      display: inline-block;
+      vertical-align: middle; /* 对inline和inline-block元素有效 */
+      font-size: 16px; /* 消除父元素的影响 */
+      line-height: normal; 
+    }
+  </style>
+</head>
+<body>
+  <!-- 在HTML5文档声明下，块状元素内部的内联元素的行为表现，就好像块状元素内部还有一个
+    （更有可能两个-前后）看不见摸不着没有宽度没有实体的空白节点，这个假想又似乎存在的空白节点，
+    称之为“幽灵空白节点” -->
+    <div class="parent">
+      <div class="child">小萝卜头</div>
+    </div>
+</body>
+</html>

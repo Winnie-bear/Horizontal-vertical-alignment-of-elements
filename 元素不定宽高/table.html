@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>table</title>
+  <link href="../common.css" rel="stylesheet" type="text/css" />
+  <style>
+    /* 前言： text-algin在块级元素中使用但作用于行内元素 */
+    .parent{
+      text-align: center; 
+    }
+    .child{
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- table的单元格中的内容天然就是垂直居中的，只需设置水平居中 。div中没有内容将看不到效果，因为内联元素
+  的特性是宽度和高度由文字内容决定-->
+  <table>
+    <tbody>
+      <tr>
+        <td class="parent">
+          <div class="child">小萝卜头</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
